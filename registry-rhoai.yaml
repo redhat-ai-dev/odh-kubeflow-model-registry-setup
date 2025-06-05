@@ -40,6 +40,47 @@ items:
           name: model-registry-db
         port: 3306
         skipDBCreation: false
-        username: mlmduser       
+        username: mlmduser
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      labels:
+        app.kubernetes.io/name: model-registry-db-2
+        app.kubernetes.io/instance: model-registry-db-2
+        app.kubernetes.io/part-of: model-registry-db-2
+        app.kubernetes.io/managed-by: kustomize
+      annotations:
+        template.openshift.io/expose-database_name: '{.data[''database-name'']}'
+        template.openshift.io/expose-password: '{.data[''database-password'']}'
+        template.openshift.io/expose-username: '{.data[''database-user'']}'
+      name: model-registry-db-2
+    stringData:
+      database-name: model_registry
+      database-password: TheBlurstOfTimes
+      database-user: mlmduser
+  - apiVersion: modelregistry.opendatahub.io/v1alpha1
+    kind: ModelRegistry
+    metadata:
+      name: modelregistry-public-2
+      namespace: rhoai-model-registries
+    spec:
+      grpc: {}
+      rest: {}
+      istio:
+        authProvider: redhat-ods-applications-auth-provider
+        gateway:
+          grpc:
+            tls: {}
+          rest:
+            tls: {}
+      mysql:
+        host: model-registry-db.test-database-2.svc.cluster.local
+        database: model_registry
+        passwordSecret:
+          key: database-password
+          name: model-registry-db
+        port: 3306
+        skipDBCreation: false
+        username: mlmduser
 kind: List
 metadata: {}
