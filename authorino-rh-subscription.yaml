@@ -9,5 +9,5 @@ spec:
   name: authorino-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: authorino-operator.v1.2.2
+  startingCSV: authorino-operator.v1.2.3
 
