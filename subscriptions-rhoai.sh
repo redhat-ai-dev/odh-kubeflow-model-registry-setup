@@ -1,17 +1,35 @@
 #!/bin/bash
-oc apply -f ./authorino-rh-subscription.yaml
+oc apply -f ./cert-manager-operator.yaml
+oc apply -f ./cert-manager-subscription.yaml
 while true; do
-	oc get csv -o name -n openshift-operators | grep authorino > autho.txt
-	if [ -s autho.txt ]; then
-		export AUTHORINO=$(cat autho.txt)
-		echo "authorino csv is ${AUTHORINO}}"
+	oc get csv -o name -n cert-manager-operator | grep cert > cert.txt
+	if [ -s cert.txt ]; then
+		export CERT=$(cat cert.txt)
+		echo "cert csv is ${CERT}}"
 		break
 	else
-		echo "autho.txt still emtpy"
+		echo "cert.txt still emtpy"
 		sleep 5
 	fi
 done
-oc wait --for=jsonpath='{.status.phase}'=Succeeded "$AUTHORINO" -n openshift-operators --timeout=300s
+oc wait --for=jsonpath='{.status.phase}'=Succeeded "$CERT" -n cert-manager-operator --timeout=300s
+
+oc apply -f ./jobset-operator.yaml
+oc apply -f ./jobset-subscription.yaml
+while true; do
+	oc get csv -o name -n openshift-jobset-operator | grep jobset > jobset.txt
+	if [ -s jobset.txt ]; then
+		export JOBSET=$(cat jobset.txt)
+		echo "jobset csv is ${JOBSET}}"
+		break
+	else
+		echo "jobset.txt still emtpy"
+		sleep 5
+	fi
+done
+oc wait --for=jsonpath='{.status.phase}'=Succeeded "$JOBSET" -n openshift-jobset-operator --timeout=300s
+
+oc apply -f ./job-set-cr.yaml
 
 oc apply -f ./rhoai-subscription.yaml
 while true; do
