@@ -43,19 +43,19 @@ spec:
 
 
               cd /tmp || exit
-              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/authorino-rh-subscription.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/default-dsc-rhoai.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/mysql-db.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/rhods-admins.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/rhoai-subscription.yaml || exit
-              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/odh-model-registrires-ns.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/registry-rhoai.yaml || exit
-              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/serverless-subscription.yaml || exit
-              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/servicemesh-subscription.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/subscriptions-rhoai.sh || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/dsc-setup-rhoai.sh || exit
-              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/default-dsci-rhoai.yaml || exit
               wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/model-registry-setup-rhoai.sh || exit
+              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/cert-manager-operator.yaml || exit
+              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/cert-manager-subscription.yaml || exit
+              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/job-set-cr.yaml || exit
+              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/jobset-operator.yaml || exit
+              wget https://raw.githubusercontent.com/redhat-ai-dev/odh-kubeflow-model-registry-setup/refs/heads/main/jobset-subscription.yaml || exit
               
               wget https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
               mv jq-linux-amd64 jq
